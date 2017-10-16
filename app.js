@@ -1,6 +1,8 @@
 const express = require('express'); // Web Framework
 const app = express();
 const mysql = require('mysql');
+var cors = require('cors');
+app.use(cors());
 
 const connection = mysql.createConnection({
   host: process.env.ITPOWER_HOST,
