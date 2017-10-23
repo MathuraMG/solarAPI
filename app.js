@@ -38,3 +38,14 @@ app.get("/data", function (req, res) {
     });
   });
 })
+
+app.get("/lastdata", function (req, res) {
+  let startTime, endTime, query;
+  connection.connect((err) => {
+    query = 'select * from itpower.BatteryValues order by RecordTime desc limit 1';
+    console.log(query);
+    connection.query(query, function(error, results, fields){
+      res.end(JSON.stringify(results)); // Result in JSON format
+    });
+  });
+})
