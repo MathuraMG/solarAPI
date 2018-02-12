@@ -49,3 +49,7 @@ app.get("/lastdata", function (req, res) {
     });
   });
 })
+
+app.post("/cd", function(req,res) {
+  console.log(req);
+})
