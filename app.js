@@ -2,6 +2,7 @@ const express = require('express'); // Web Framework
 const app = express();
 const mysql = require('mysql');
 var cors = require('cors');
+var bodyParser = require('body-parser');
 app.use(cors());
 
 const connection = mysql.createConnection({
@@ -10,6 +11,10 @@ const connection = mysql.createConnection({
   password: process.env.ITPOWER_PASSWORD,
   database: process.env.ITPOWER_DB
 });
+
+
+app.use(bodyParser.json()); 						  // for  application/json
+app.use(bodyParser.urlencoded({extended: false})); // for application/x-www-form-urlencoded
 
 var server = app.listen(process.env.PORT || 8081, function () {
     var host = server.address().address
